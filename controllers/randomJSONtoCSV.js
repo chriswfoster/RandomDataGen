@@ -8,6 +8,8 @@ const phoneNumberBuilder = require('../builders/phoneNumberBuilder');
 const refNumBuilder = require('../builders/refNumBuilder');
 const sporadicData = require('../builders/sporadicData');
 const dateBuilder = require('../builders/dateBuilder');
+const streetAddressBuilder = require('../builders/streetAddressBuilder');
+const fakeStates = require('../templates/fakeStateNames')
 const outputPath = './YourCSVFile.csv'
 
 module.exports = (rowCount) => {
@@ -28,7 +30,7 @@ module.exports = (rowCount) => {
         }, 
         {
             title: "Tag Name",
-            value: "Blazing Starz" // static data
+            value: "Suh Dude" // static data
         },
         {
             title: "DOB",
@@ -40,13 +42,29 @@ module.exports = (rowCount) => {
                                                         // the params for sporadicData are: callback, params, intensity... 
                                                         // the function to randomize, params to pass into the random fn, and 1-100 chance it'll happen (default is 50%)
         },
+        // {
+        //     title: "WhateverIWant",
+        //     value: () => { 
+        //         let chance = Math.floor(Math.random() * 50) + 22;
+        //         return ` ${chance} chance it'll snow where you live today!`;
+        //     }
+        // },
         {
-            title: "WhateverIWant",
-            value: () => { 
-                let chance = Math.floor(Math.random() * 50) + 22;
-                return `There's a ${chance} chance it'll snow where you live today!`;
-            }
+            title: "Postal Code",
+            value: 19888
         },
+        {
+            title: "Street Address",
+            value: streetAddressBuilder
+        },
+        {
+            title: 'State',
+            value: () => fakeStates[Math.floor(Math.random() * fakeStates.length)]
+        },
+        {
+            title: "Country",
+            value: "US"
+        }
     ]
     
     let builtJSON = [];
@@ -67,7 +85,7 @@ module.exports = (rowCount) => {
     // return builtJSON;
     const json2csvParser = new Parser();
     const csv = json2csvParser.parse(builtJSON);
-    fs.writeFile("./YourCSVFile.csv", csv, function(err) {
+    fs.writeFile(outputPath, csv, function(err) {
         if(err) {
             return console.log(err);
         }
