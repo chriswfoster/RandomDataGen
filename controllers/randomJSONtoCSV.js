@@ -51,7 +51,7 @@ module.exports = (rowCount) => {
         // },
         {
             title: "Postal Code",
-            value: 19888
+            value: "00000"
         },
         {
             title: "Street Address",
