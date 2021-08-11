@@ -11,7 +11,8 @@ const dateBuilder = require('../builders/dateBuilder');
 const streetAddressBuilder = require('../builders/streetAddressBuilder');
 const fakeStates = require('../templates/fakeStateNames')
 const randomWords = require('../templates/randomWords')
-const nouns = require('../templates/nouns')
+const nouns = require('../templates/nouns');
+const emailBuilder = require('../builders/emailBuilder');
 const outputPath = './YourCSVFile.csv'
 
 module.exports = (rowCount) => {
@@ -37,6 +38,10 @@ module.exports = (rowCount) => {
         {
             title: "DOB",
             value: dateBuilder // static data
+        },
+        {
+            title: "Email",
+            value: () => emailBuilder() // static data
         },
         {
             title: "PosRefNum", 
