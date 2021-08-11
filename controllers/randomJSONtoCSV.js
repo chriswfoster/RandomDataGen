@@ -32,7 +32,7 @@ module.exports = (rowCount) => {
         }, 
         {
             title: "somePref",
-            value: `${randomWords[Math.floor(Math.random() * randomWords.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`
+            value: () => `${randomWords[Math.floor(Math.random() * randomWords.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`
         },
         {
             title: "DOB",
