@@ -10,6 +10,8 @@ const sporadicData = require('../builders/sporadicData');
 const dateBuilder = require('../builders/dateBuilder');
 const streetAddressBuilder = require('../builders/streetAddressBuilder');
 const fakeStates = require('../templates/fakeStateNames')
+const randomWords = require('../templates/randomWords')
+const nouns = require('../templates/nouns')
 const outputPath = './YourCSVFile.csv'
 
 module.exports = (rowCount) => {
@@ -29,8 +31,8 @@ module.exports = (rowCount) => {
             // value: () => firstAndLastnameBuilder("male"), // name builder has Gender Bias!!!! Pass in "male" or "female" to get those types of names only
         }, 
         {
-            title: "Tag Name",
-            value: "Suh Dude" // static data
+            title: "somePref",
+            value: `${randomWords[Math.floor(Math.random() * randomWords.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`
         },
         {
             title: "DOB",

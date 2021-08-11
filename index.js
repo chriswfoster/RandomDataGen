@@ -2,6 +2,6 @@
 const randomJSONtoCSV = require('./controllers/randomJSONtoCSV');
 
 
-let plzGetMeData = randomJSONtoCSV(5000); // this function gives you some customized JSOn data
+let plzGetMeData = randomJSONtoCSV(100); // this function gives you some customized JSOn data
 
 console.log(plzGetMeData);
