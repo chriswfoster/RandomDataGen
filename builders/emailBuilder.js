@@ -1,8 +1,8 @@
-const extensions = require('../templates/extensions.JSON');
+const extensions = require('../templates/extensions');
 module.exports = () => {
     const firstWord = getRandomText();
     const secondWord = getRandomText();
-    const extension = extension[Math.floor(Math.random() * extensions.length)];
+    const extension = extensions[Math.floor(Math.random() * extensions.length)];
 
     return `${firstWord}@${secondWord}.${extension}`;
 }
